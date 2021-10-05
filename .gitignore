@@ -1,3 +1,9 @@
 
-/Domain/obj/
-/Infrastructure/bin/
+/Domain/obj/*
+/Domain/bin/*
+/Infrastructure/obj/*
+/Infrastructure/bin/*
+/KanBanAPI/obj/*
+/KanBanAPI/bin/*
+
+/KanBanAPI/.vs/*

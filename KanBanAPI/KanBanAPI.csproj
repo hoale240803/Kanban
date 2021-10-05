@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>c6a25f3b-b35c-4780-82f2-f938ec6f1f21</UserSecretsId>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.14" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dtos\ReplyComment\" />
+    <Folder Include="Dtos\Attachment\" />
+    <Folder Include="Dtos\TaggedPerson\" />
+    <Folder Include="Dtos\Redemption\" />
+    <Folder Include="Dtos\RedemptionGift\" />
+    <Folder Include="Dtos\TaskCardHistory\" />
+    <Folder Include="Dtos\Gift\" />
+    <Folder Include="Dtos\Employee\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+</Project>

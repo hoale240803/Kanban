@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\..\..\Data\DataEntities\AspNetRole.cs" Link="Data\DataEntities\AspNetRole.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\AspNetRoleClaim.cs" Link="Data\DataEntities\AspNetRoleClaim.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\AspNetUser.cs" Link="Data\DataEntities\AspNetUser.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\AspNetUserClaim.cs" Link="Data\DataEntities\AspNetUserClaim.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\AspNetUserLogin.cs" Link="Data\DataEntities\AspNetUserLogin.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\AspNetUserRole.cs" Link="Data\DataEntities\AspNetUserRole.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\AspNetUserToken.cs" Link="Data\DataEntities\AspNetUserToken.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\Attachment.cs" Link="Data\DataEntities\Attachment.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\CardList.cs" Link="Data\DataEntities\CardList.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\Comment.cs" Link="Data\DataEntities\Comment.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\Employee.cs" Link="Data\DataEntities\Employee.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\Gift.cs" Link="Data\DataEntities\Gift.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\KanbanContext.cs" Link="Data\DataEntities\KanbanContext.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\Redemption.cs" Link="Data\DataEntities\Redemption.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\RemptionGift.cs" Link="Data\DataEntities\RemptionGift.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\ReplyComment.cs" Link="Data\DataEntities\ReplyComment.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\Role.cs" Link="Data\DataEntities\Role.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\Tag.cs" Link="Data\DataEntities\Tag.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\TagUser.cs" Link="Data\DataEntities\TagUser.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\TaskCard.cs" Link="Data\DataEntities\TaskCard.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\TaskCardHistory.cs" Link="Data\DataEntities\TaskCardHistory.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\Todo.cs" Link="Data\DataEntities\Todo.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\User.cs" Link="Data\DataEntities\User.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\UserRole.cs" Link="Data\DataEntities\UserRole.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\UserToken.cs" Link="Data\DataEntities\UserToken.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\EntitiesConfig\" />
+    <Folder Include="Data\DataEntities\" />
+    <Folder Include="Exception\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
