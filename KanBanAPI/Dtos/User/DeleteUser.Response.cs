@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KanBanAPI.Dtos.Todo
+namespace KanBanAPI.Dtos.User
 {
-    public class DeleteTodoResponse
+    public class DeleteUserResponse
     {
+        public bool isDeleted { get; set; }
     }
 }

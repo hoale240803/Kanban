@@ -7,5 +7,6 @@ namespace KanBanAPI.Dtos.TaskCard
 {
     public class DeleteTaskCardRequest
     {
+        public int Id { get; set; }
     }
 }

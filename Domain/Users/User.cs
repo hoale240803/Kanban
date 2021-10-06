@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Users
 {
-    class User
+    public class User
     {
         public List<RefreshToken> RefreshTokens { get; set; }
     }

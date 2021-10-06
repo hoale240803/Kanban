@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KanBanAPI.Dtos.Todo
+namespace KanBanAPI.Dtos.Comment
 {
-    public class UpdateTodoRequest
+    public class GetCommentDTORequest
     {
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KanBanAPI.Dtos.Todo
+namespace KanBanAPI.Dtos.User
 {
-    public class DeleteTodoRequest
+    public class GetUserInfo
     {
     }
 }

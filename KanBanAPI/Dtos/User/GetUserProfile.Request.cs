@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Todos
+namespace KanBanAPI.Dtos.User
 {
-    public class Todo
+    public class GetUserProfileRequest
     {
+        public int UserId { get; set; }
     }
 }

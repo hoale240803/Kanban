@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Todos
+namespace Domain.Interfaces
 {
-    public class Todo
+    class IRepository
     {
     }
 }

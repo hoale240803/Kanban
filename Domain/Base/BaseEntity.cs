@@ -5,9 +5,8 @@ namespace Domain.Base
 {
     public abstract class BaseEntity
     {
-        [NotMapped]
+
         private List<BaseDomainEvent> _events;
-        [NotMapped]
         public IReadOnlyList<BaseDomainEvent> Events => _events.AsReadOnly();
 
         protected void AddEvent(BaseDomainEvent @event)

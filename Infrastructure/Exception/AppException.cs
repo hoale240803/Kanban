@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Todos
+namespace Infrastructure.Exceptions
 {
-    public class Todo
+    class AppException
     {
     }
 }

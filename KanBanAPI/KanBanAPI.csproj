@@ -27,7 +27,9 @@
     <Folder Include="Dtos\Gift\" />
     <Folder Include="Dtos\Employee\" />
     <Folder Include="Extensions\" />
-    <Folder Include="Services\" />
+    <Folder Include="Services\CardListService\" />
+    <Folder Include="Services\TaskCardService\" />
+    <Folder Include="Services\UserService\" />
   </ItemGroup>
 
 </Project>

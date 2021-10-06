@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Todos
+namespace KanBanAPI.Controllers
 {
-    public class Todo
+    public class TaskCardController
     {
     }
 }
