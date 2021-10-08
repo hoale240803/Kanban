@@ -18,18 +18,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Dtos\Base\" />
     <Folder Include="Dtos\ReplyComment\" />
-    <Folder Include="Dtos\Attachment\" />
-    <Folder Include="Dtos\TaggedPerson\" />
     <Folder Include="Dtos\Redemption\" />
     <Folder Include="Dtos\RedemptionGift\" />
     <Folder Include="Dtos\TaskCardHistory\" />
     <Folder Include="Dtos\Gift\" />
     <Folder Include="Dtos\Employee\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="Services\CardListService\" />
-    <Folder Include="Services\TaskCardService\" />
-    <Folder Include="Services\UserService\" />
   </ItemGroup>
 
 </Project>

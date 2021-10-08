@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Data.Repositories
 {
-    class AttachmentRepository
+    class AttachmentRepository: IAttachmentRepository
     {
     }
 }

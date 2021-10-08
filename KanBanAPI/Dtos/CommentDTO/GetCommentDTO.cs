@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace KanBanAPI.Dtos.Comment
 {
-    public class GetComment
+    public class GetCommentDTO
     {
     }
 }
