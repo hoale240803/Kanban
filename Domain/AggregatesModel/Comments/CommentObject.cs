@@ -1,5 +1,6 @@
 ﻿using Domain.AggregatesModel.Replycomments;
 using Domain.AggregatesModel.TaskCard;
+using Domain.AggregatesModel.Users;
 using Domain.SeedWork;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace Domain.AggregatesModel.Comments
         public int? IdUser { get; set; }
 
         public virtual TaskCardObject IdTaskCardNavigation { get; set; }
+        public virtual UserObject IdUserCardNavigation { get; set; }
         public virtual ICollection<ReplyCommentObject> ReplyComments { get; set; }
     }
 }

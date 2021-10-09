@@ -1,15 +1,10 @@
 ﻿using Domain.AggregatesModel.Todos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Data.EntitiesConfig
 {
-    class TodoEntityTypeConfiguration : IEntityTypeConfiguration<TodoObject>
+    internal class TodoEntityTypeConfiguration : IEntityTypeConfiguration<TodoObject>
     {
         public void Configure(EntityTypeBuilder<TodoObject> builder)
         {
@@ -37,9 +32,13 @@ namespace Infrastructure.Data.EntitiesConfig
                 .HasMaxLength(255)
                 .HasColumnName("header");
 
-            builder.Property(e => e.IdTaskCard).HasColumnName("idTaskCard");
+            builder.Property(e => e.IdTaskCard)
+                .HasColumnName("idTaskCard")
+                .IsRequired(true);
 
-            builder.Property(e => e.IdUser).HasColumnName("idUser");
+            builder.Property(e => e.IdUser)
+                .HasColumnName("idUser")
+                .IsRequired(true);
 
             builder.Property(e => e.Location)
                 .HasMaxLength(255)

@@ -1,15 +1,10 @@
 ﻿using Domain.AggregatesModel.TaskCards;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Data.EntitiesConfig
 {
-    class TaskCardHistoryEntityTypeConfiguration : IEntityTypeConfiguration<TaskCardHistoryObject>
+    internal class TaskCardHistoryEntityTypeConfiguration : IEntityTypeConfiguration<TaskCardHistoryObject>
     {
         public void Configure(EntityTypeBuilder<TaskCardHistoryObject> builder)
         {

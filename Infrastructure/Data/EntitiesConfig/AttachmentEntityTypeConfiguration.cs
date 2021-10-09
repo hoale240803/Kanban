@@ -15,22 +15,28 @@ namespace Infrastructure.Data.EntitiesConfig
             builder.Property(e => e.Id).HasColumnName("id");
 
             builder.Property(e => e.ExternalPath)
+                .UsePropertyAccessMode(PropertyAccessMode.Field)
                 .HasMaxLength(512)
                 .HasColumnName("externalPath");
 
             builder.Property(e => e.FileId)
+                .UsePropertyAccessMode(PropertyAccessMode.Field)
                 .HasMaxLength(512)
-                .HasColumnName("fileId");
+                .HasColumnName("fileId")
+                .IsRequired(true);
 
             builder.Property(e => e.FileName)
+                .UsePropertyAccessMode(PropertyAccessMode.Field)
                 .HasMaxLength(255)
                 .HasColumnName("fileName");
 
-            builder.Property(e => e.IdComment).HasColumnName("idComment");
-
-            builder.Property(e => e.IdTaskCard).HasColumnName("idTaskCard");
+            builder.Property(e => e.Category)
+                .UsePropertyAccessMode(PropertyAccessMode.Field)
+                .HasColumnName("category")
+                .IsRequired(true);
 
             builder.Property(e => e.InternalPath)
+                .UsePropertyAccessMode(PropertyAccessMode.Field)
                 .HasMaxLength(512)
                 .HasColumnName("internalPath");
         }
