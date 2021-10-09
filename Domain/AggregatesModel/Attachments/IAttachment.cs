@@ -1,7 +1,4 @@
-﻿
-
-using Domain.Attachments;
-using Domain.SeedWork;
+﻿using Domain.SeedWork;
 using System.Threading.Tasks;
 
 namespace Domain.AggregatesModel.Attachments

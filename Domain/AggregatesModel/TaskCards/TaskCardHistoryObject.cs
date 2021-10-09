@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Domain.SeedWork;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-#nullable disable
-
-namespace Domain.Models
+namespace Domain.AggregatesModel.TaskCards
 {
-    public partial class TaskCardHistory
+    public class TaskCardHistoryObject: Entity, IAggregateRoot
     {
-        public int Id { get; set; }
         public int? IdTaskCard { get; set; }
         public int? IdTodo { get; set; }
         public int? IdComment { get; set; }

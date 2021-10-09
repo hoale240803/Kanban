@@ -1,7 +1,7 @@
 ﻿using Domain.SeedWork;
 using System.Threading.Tasks;
 
-namespace Domain.Comments
+namespace Domain.AggregatesModel.Comments
 {
     public interface IComment : IRepository<CommentObject>
     {

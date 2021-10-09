@@ -17,7 +17,7 @@
     <Compile Include="..\..\..\..\..\Data\DataEntities\Comment.cs" Link="Data\DataEntities\Comment.cs" />
     <Compile Include="..\..\..\..\..\Data\DataEntities\Employee.cs" Link="Data\DataEntities\Employee.cs" />
     <Compile Include="..\..\..\..\..\Data\DataEntities\Gift.cs" Link="Data\DataEntities\Gift.cs" />
-    <Compile Include="..\..\..\..\..\Data\DataEntities\KanbanContext.cs" Link="Data\DataEntities\KanbanContext.cs" />
+    <Compile Include="..\..\..\..\..\Data\DataEntities\KanbanContext.cs" Link="KanbanContext.cs" />
     <Compile Include="..\..\..\..\..\Data\DataEntities\Redemption.cs" Link="Data\DataEntities\Redemption.cs" />
     <Compile Include="..\..\..\..\..\Data\DataEntities\RemptionGift.cs" Link="Data\DataEntities\RemptionGift.cs" />
     <Compile Include="..\..\..\..\..\Data\DataEntities\ReplyComment.cs" Link="Data\DataEntities\ReplyComment.cs" />
@@ -48,6 +48,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>
