@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Domain.AggregatesModel.Todos
 {
-    public interface ITodo : IRepository<TodoObject>
+    public interface ITodoRepository : IRepository<TodoObject>
     {
         TodoObject Add(TodoObject order);
 

@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace KanBanAPI.Application.Commands.TaskCard
 {
-    public class DeleteTaskCardCommand
+    public class DeleteTaskCardCommand : IRequest<bool>
     {
+        public int _idTaskCard { get; set; }
+
+        public DeleteTaskCardCommand(int idTaskCard)
+        {
+            _idTaskCard = idTaskCard;
+        }
     }
 }

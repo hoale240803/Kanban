@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.AggregatesModel.Redemptions
 {
-    interface IRedemption : IRepository<RedemptionObject>
+    interface IRedemptionRepository : IRepository<RedemptionObject>
     {
 
     }

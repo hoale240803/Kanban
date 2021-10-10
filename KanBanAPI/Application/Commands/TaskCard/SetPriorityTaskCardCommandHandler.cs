@@ -1,11 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Domain.AggregatesModel.TaskCards;
+using MediatR;
+using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KanBanAPI.Application.Commands.TaskCard
 {
-    public class SetPriorityTaskCardCommandHandler
+    public class SetPriorityTaskCardCommandHandler : IRequestHandler<SetPriorityTaskCardCommand, bool>
     {
+        private readonly ITaskCardRepository _taskCardRepository;
+
+        public SetPriorityTaskCardCommandHandler(ITaskCardRepository taskCardRepository)
+        {
+            _taskCardRepository = taskCardRepository ?? throw new ArgumentNullException(nameof(_taskCardRepository));
+        }
+
+        public Task<bool> Handle(SetPriorityTaskCardCommand request, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

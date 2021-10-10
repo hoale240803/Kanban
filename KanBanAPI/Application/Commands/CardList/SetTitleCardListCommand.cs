@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace KanBanAPI.Application.Commands.CardList
 {
-    public class CreateCardList
+    public class SetTitleCardListCommand : IRequest<bool>
     {
+        public string _title { get; set; }
+
+        public SetTitleCardListCommand(string title)
+        {
+            _title = title;
+        }
     }
 }

@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace KanBanAPI.Application.Commands.TaskCard
 {
-    public class UpdateTaskCardCommandHandler : IRequestHandler<UpdateTaskCardCommand, bool>
+    public class SaveDescriptionCommandHandler : IRequestHandler<SaveDescriptionCommand, bool>
     {
         private readonly ITaskCardRepository _taskCardRepository;
 
-        public UpdateTaskCardCommandHandler(ITaskCardRepository taskCardRepository)
+        public SaveDescriptionCommandHandler(ITaskCardRepository taskCardRepository)
         {
             _taskCardRepository = taskCardRepository ?? throw new ArgumentNullException(nameof(_taskCardRepository));
         }
 
-        public Task<bool> Handle(UpdateTaskCardCommand request, CancellationToken cancellationToken)
+        public Task<bool> Handle(SaveDescriptionCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
