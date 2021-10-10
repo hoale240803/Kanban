@@ -1,8 +1,8 @@
-﻿using Domain.SeedWork;
-using Domain.TaskCard;
+﻿using Domain.AggregatesModel.TaskCard;
+using Domain.SeedWork;
 using System.Threading.Tasks;
 
-namespace Domain.TaskCards
+namespace Domain.AggregatesModel.TaskCards
 {
     public interface ITaskCard : IRepository<TaskCardObject>
     {

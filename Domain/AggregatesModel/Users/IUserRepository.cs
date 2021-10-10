@@ -1,9 +1,10 @@
-﻿using Domain.SeedWork;
+﻿using Domain.AggregatesModel.Users;
+using Domain.SeedWork;
 using System.Threading.Tasks;
 
 namespace Domain.Users
 {
-    public interface IUser : IRepository<UserObject>
+    public interface IUserRepository : IRepository<UserObject>
     {
         UserObject Login(UserObject order);
 

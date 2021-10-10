@@ -1,15 +1,13 @@
 ﻿using MediatR;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.SeedWork
 {
     public abstract class Entity
     {
-        int _Id;
+        private int _Id;
+
         public virtual int Id
         {
             get
@@ -21,6 +19,7 @@ namespace Domain.SeedWork
                 _Id = value;
             }
         }
+
         private List<INotification> _domainEvents;
         public IReadOnlyCollection<INotification> DomainEvents => _domainEvents?.AsReadOnly();
 
@@ -34,6 +33,7 @@ namespace Domain.SeedWork
         {
             _domainEvents?.Remove(eventItem);
         }
+
         public void ClearDomainEvents()
         {
             _domainEvents?.Clear();

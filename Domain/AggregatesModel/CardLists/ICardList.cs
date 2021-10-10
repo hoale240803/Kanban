@@ -1,7 +1,7 @@
 ﻿using Domain.SeedWork;
 using System.Threading.Tasks;
 
-namespace Domain.CardLists
+namespace Domain.AggregatesModel.CardLists
 {
     public interface ICardList : IRepository<CardListObject>
     {

@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Domain.AggregatesModel.TaskCard;
+using Domain.SeedWork;
+using System;
 
-#nullable disable
-
-namespace Domain.Models
+namespace Domain.AggregatesModel.Todos
 {
-    public partial class Todo
+    public class TodoObject : Entity, IAggregateRoot
     {
-        public int Id { get; set; }
         public int? IdTaskCard { get; set; }
         public string Header { get; set; }
         public string Body { get; set; }
@@ -20,6 +18,6 @@ namespace Domain.Models
         public string Location { get; set; }
         public int? IdUser { get; set; }
 
-        public virtual TaskCard IdTaskCardNavigation { get; set; }
+        public virtual TaskCardObject IdTaskCardNavigation { get; set; }
     }
 }

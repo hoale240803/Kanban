@@ -5,13 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="UserToken\" />
-    <Folder Include="UserRole\" />
-    <Folder Include="Roles\" />
+    <Folder Include="Events\" />
+    <Folder Include="AggregatesModel\UserToken\" />
+    <Folder Include="AggregatesModel\UserRole\" />
+    <Folder Include="AggregatesModel\Roles\" />
   </ItemGroup>
 
   <ItemGroup>
