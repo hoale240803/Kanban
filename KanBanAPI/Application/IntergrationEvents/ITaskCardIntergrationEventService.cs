@@ -1,14 +1,14 @@
-﻿using KanBanAPI.Application.IntergrationEvents.Events;
+﻿using KanBanAPI.Application.IntergrationEvents;
+using MiddleMan.EventBus.Events;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace KanBanAPI.Application.IntergrationEvents
 {
-    public interface TaskCardIntergrationEventService
+    public interface ITaskCardIntergrationEventService
     {
         Task PublishEventsThroughEventBusAsync(Guid transactionId);
+
         Task AddAndSaveEventAsync(IntegrationEvent evt);
     }
 }

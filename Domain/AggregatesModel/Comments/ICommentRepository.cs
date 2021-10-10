@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Domain.AggregatesModel.Comments
 {
-    public interface IComment : IRepository<CommentObject>
+    public interface ICommentRepository : IRepository<CommentObject>
     {
         CommentObject Add(CommentObject order);
 

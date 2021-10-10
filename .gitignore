@@ -7,3 +7,9 @@
 /KanBanAPI/bin/*
 
 /KanBanAPI/.vs/*
+
+
+/EventBus/bin/*
+/EventBus/obj/*
+/IntegrationEventLogEF/obj/*
+/IntegrationEventLogEF/bin/*

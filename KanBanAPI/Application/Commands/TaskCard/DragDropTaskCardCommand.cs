@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace KanBanAPI.Application.Commands.TaskCard
 {
-    public class DragDropTaskCardCommand
+    public class DragDropTaskCardCommand : IRequest<bool>
     {
+        public int _idTaskCard { get; set; }
+
+        public DragDropTaskCardCommand(int idTaskCard)
+        {
+            _idTaskCard = idTaskCard;
+        }
     }
 }
