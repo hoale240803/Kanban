@@ -26,6 +26,7 @@ namespace KanBanAPI.Application.Commands.TaskCard
             string status, DateTime duedate, string location, string device, int idUser,
             List<AttachmentDTO> attachmentDTOs, List<CommentDTO> commentDTOs, List<TodoDTO> todoDTOs)
         {
+
         }
     }
 

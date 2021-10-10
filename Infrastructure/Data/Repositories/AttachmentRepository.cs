@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Data.Repositories
 {
-    internal class AttachmentRepository : IAttachmentRepository
+    public  class AttachmentRepository : IAttachmentRepository
     {
         public IUnitOfWork UnitOfWork => throw new System.NotImplementedException();
 

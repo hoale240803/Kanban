@@ -1,30 +1,34 @@
-﻿using KanBanAPI.Application.IntergrationEvents.Events;
+﻿using Infrastructure;
+using IntegrationEventLogEF;
+using IntegrationEventLogEF.Services;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using MiddleMan.EventBus.Abstractions;
+using MiddleMan.EventBus.Events;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Data.Common;
 using System.Threading.Tasks;
 
 namespace KanBanAPI.Application.IntergrationEvents
 {
-    public class TaskCardIntergrationEventService: ITaskCardIntergrationEventService
+    public class TaskCardIntergrationEventService : ITaskCardIntergrationEventService
     {
         private readonly Func<DbConnection, IIntegrationEventLogService> _integrationEventLogServiceFactory;
         private readonly IEventBus _eventBus;
-        private readonly OrderingContext _orderingContext;
+        private readonly KanbanContext _kanbanContext;
         private readonly IIntegrationEventLogService _eventLogService;
-        private readonly ILogger<OrderingIntegrationEventService> _logger;
+        private readonly ILogger<TaskCardIntergrationEventService> _logger;
 
-        public OrderingIntegrationEventService(IEventBus eventBus,
-            OrderingContext orderingContext,
+        public TaskCardIntergrationEventService(IEventBus eventBus,
+            KanbanContext kanbanContext,
             IntegrationEventLogContext eventLogContext,
             Func<DbConnection, IIntegrationEventLogService> integrationEventLogServiceFactory,
-            ILogger<OrderingIntegrationEventService> logger)
+            ILogger<TaskCardIntergrationEventService> logger)
         {
-            _orderingContext = orderingContext ?? throw new ArgumentNullException(nameof(orderingContext));
+            _kanbanContext = kanbanContext ?? throw new ArgumentNullException(nameof(kanbanContext));
             _integrationEventLogServiceFactory = integrationEventLogServiceFactory ?? throw new ArgumentNullException(nameof(integrationEventLogServiceFactory));
             _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
-            _eventLogService = _integrationEventLogServiceFactory(_orderingContext.Database.GetDbConnection());
+            _eventLogService = _integrationEventLogServiceFactory(_kanbanContext.Database.GetDbConnection());
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
@@ -55,7 +59,7 @@ namespace KanBanAPI.Application.IntergrationEvents
         {
             _logger.LogInformation("----- Enqueuing integration event {IntegrationEventId} to repository ({@IntegrationEvent})", evt.Id, evt);
 
-            await _eventLogService.SaveEventAsync(evt, _orderingContext.GetCurrentTransaction());
+            await _eventLogService.SaveEventAsync(evt, _kanbanContext.GetCurrentTransaction());
         }
     }
 }

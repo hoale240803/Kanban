@@ -1,5 +1,4 @@
-﻿
-using Domain.AggregatesModel.Users;
+﻿using Domain.AggregatesModel.Users;
 using Domain.SeedWork;
 using Domain.Users;
 using System;
@@ -10,6 +9,7 @@ namespace Infrastructure.Data.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly KanbanContext _context;
+
         public IUnitOfWork UnitOfWork
         {
             get
@@ -17,10 +17,12 @@ namespace Infrastructure.Data.Repositories
                 return _context;
             }
         }
+
         public UserRepository(KanbanContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
+
         public void Delete(string id)
         {
             throw new NotImplementedException();
@@ -46,6 +48,4 @@ namespace Infrastructure.Data.Repositories
             throw new NotImplementedException();
         }
     }
-
-
 }

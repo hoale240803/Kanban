@@ -1,9 +1,7 @@
 ﻿using Infrastructure.Idempotency;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using MiddleMan.EventBus.Extentions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,6 +23,7 @@ namespace KanBanAPI.Application.Commands
             _requestManager = requestManager;
             _logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
         }
+
         /// <summary>
         /// Creates the result value to return if a previous request was found
         /// </summary>
@@ -33,6 +32,7 @@ namespace KanBanAPI.Application.Commands
         {
             return default(R);
         }
+
         public async Task<R> Handle(IdentifiedCommand<T, R> message, CancellationToken cancellationToken)
         {
             var alreadyExists = await _requestManager.ExistAsync(message.Id);
@@ -46,7 +46,7 @@ namespace KanBanAPI.Application.Commands
                 try
                 {
                     var command = message.Command;
-                    //var commandName = command.GetGenericTypeName(); // eventBus project
+                    var commandName = command.GetGenericTypeName(); // eventBus project
                     var idProperty = string.Empty;
                     var commandId = string.Empty;
 
@@ -80,16 +80,16 @@ namespace KanBanAPI.Application.Commands
                     //    commandId,
                     //    command);
 
-                    //// Send the embeded business command to mediator so it runs its related CommandHandler 
+                    //// Send the embeded business command to mediator so it runs its related CommandHandler
                     var result = await _mediator.Send(command, cancellationToken);
 
-                    //_logger.LogInformation(
-                    //    "----- Command result: {@Result} - {CommandName} - {IdProperty}: {CommandId} ({@Command})",
-                    //    result,
-                    //    commandName,
-                    //    idProperty,
-                    //    commandId,
-                    //    command);
+                    _logger.LogInformation(
+                        "----- Command result: {@Result} - {CommandName} - {IdProperty}: {CommandId} ({@Command})",
+                        result,
+                        commandName,
+                        idProperty,
+                        commandId,
+                        command);
 
                     return result;
                 }

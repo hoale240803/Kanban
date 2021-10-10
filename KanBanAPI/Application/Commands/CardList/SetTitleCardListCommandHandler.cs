@@ -19,7 +19,7 @@ namespace KanBanAPI.Application.Commands.CardList
 
         public async Task<bool> Handle(SetTitleCardListCommand request, CancellationToken cancellationToken)
         {
-            _cardListRepository.UpdateTitle(request._title);
+            _cardListRepository.UpdateTitle(request._title, request._idCardList);
             return await _cardListRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
         }
     }

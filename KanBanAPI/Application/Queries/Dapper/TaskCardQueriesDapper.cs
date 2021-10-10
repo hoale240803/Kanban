@@ -57,6 +57,11 @@ namespace KanBanAPI.Application.Queries.Dapper
             throw new NotImplementedException();
         }
 
+        Task<TaskCardObject> ITaskCardQueries.GetTaskCardAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         private TaskCardViewModel MapTaskCardObject(dynamic result)
         {
             var taskCard = new TaskCardViewModel

@@ -7,9 +7,9 @@ namespace Domain.AggregatesModel.CardLists
     {
         CardListObject Add(CardListObject order);
 
-        bool Update(CardListObject order);
+        void Update(CardListObject order);
 
-        bool UpdateTitle(string title);
+        bool UpdateTitle(string title, int idCardList);
 
         Task<CardListObject> GetAsync(int orderId);
 
