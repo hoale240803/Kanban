@@ -34,19 +34,19 @@ namespace KanBanAPI.Controllers
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> CreateCardListAsync([FromBody] CreateTaskCardCommand command, [FromHeader(Name = "x-requestid")] string requestId)
+        public async Task<IActionResult> CreateCardListAsync([FromBody] CreateCardListCommand command, [FromHeader(Name = "x-requestid")] string requestId)
         {
             bool commandResult = false;
 
             if (Guid.TryParse(requestId, out Guid guid) && guid != Guid.Empty)
             {
-                var requestCreateTaskCard = new IdentifiedCommand<CreateTaskCardCommand, bool>(command, guid);
+                var requestCreateTaskCard = new IdentifiedCommand<CreateCardListCommand, bool>(command, guid);
 
                 _logger.LogInformation(
                     "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
                     requestCreateTaskCard.GetGenericTypeName(),
-                    nameof(requestCreateTaskCard.Command._idCardList),
-                    requestCreateTaskCard.Command._idUser,
+                    nameof(requestCreateTaskCard.Command.IdUser),
+                    requestCreateTaskCard.Command.Title,
                     requestCreateTaskCard);
 
                 commandResult = await _mediator.Send(requestCreateTaskCard);

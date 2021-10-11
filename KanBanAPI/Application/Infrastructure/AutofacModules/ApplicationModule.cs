@@ -4,8 +4,11 @@ using Domain.AggregatesModel.CardLists;
 using Domain.AggregatesModel.Comments;
 using Domain.AggregatesModel.TaskCards;
 using Infrastructure.Data.Repositories;
+using KanBanAPI.Application.Commands.CardList;
 using KanBanAPI.Application.Queries;
 using KanBanAPI.Application.Queries.Dapper;
+using MiddleMan.EventBus.Abstractions;
+using System.Reflection;
 
 namespace KanBanAPI.Application.Infrastructure.AutofacModules
 {
@@ -41,8 +44,8 @@ namespace KanBanAPI.Application.Infrastructure.AutofacModules
                .As<ITaskCardRepository>()
                .InstancePerLifetimeScope();
 
-            //builder.RegisterAssemblyTypes(typeof(CreateOrderCommandHandler).GetTypeInfo().Assembly)
-            //    .AsClosedTypesOf(typeof(IIntegrationEventHandler<>));
+            builder.RegisterAssemblyTypes(typeof(CreateCardListCommand).GetTypeInfo().Assembly)
+                .AsClosedTypesOf(typeof(IIntegrationEventHandler<>));
         }
     }
 }
