@@ -13,3 +13,5 @@
 /EventBus/obj/*
 /IntegrationEventLogEF/obj/*
 /IntegrationEventLogEF/bin/*
+/MiddleMan/EventBus/obj/*
+/MiddleMan/EventBus/bin/*

@@ -1,7 +1,7 @@
 ﻿using Infrastructure.Idempotency;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using MiddleMan.EventBus.Extentions;
+using MiddleMan.EventBus.Extensions;
 using System.Threading;
 using System.Threading.Tasks;
 

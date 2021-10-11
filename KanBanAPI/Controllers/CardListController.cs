@@ -5,7 +5,7 @@ using KanBanAPI.Application.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MiddleMan.EventBus.Extentions;
+using MiddleMan.EventBus.Extensions;
 using System;
 using System.Net;
 using System.Threading.Tasks;

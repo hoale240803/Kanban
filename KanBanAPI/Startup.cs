@@ -1,7 +1,6 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Infrastructure;
-using IntegrationEventLogEF;
 using KanBanAPI.Application.Infrastructure.AutofacModules;
 using KanBanAPI.Application.Infrastructure.Filters;
 using KanBanAPI.Controllers;
@@ -13,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using MiddleMan.IntegrationEventLogEF;
 using System;
 using System.Reflection;
 

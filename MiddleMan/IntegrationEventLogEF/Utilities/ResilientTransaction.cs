@@ -2,12 +2,11 @@
 using System;
 using System.Threading.Tasks;
 
-namespace IntegrationEventLogEF.Utilities
+namespace MiddleMan.IntegrationEventLogEF.Utilities
 {
     public class ResilientTransaction
     {
         private DbContext _context;
-
         private ResilientTransaction(DbContext context) =>
             _context = context ?? throw new ArgumentNullException(nameof(context));
 

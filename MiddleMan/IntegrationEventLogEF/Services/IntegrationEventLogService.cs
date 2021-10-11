@@ -8,7 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace IntegrationEventLogEF.Services
+namespace MiddleMan.IntegrationEventLogEF.Services
 {
     public class IntegrationEventLogService : IIntegrationEventLogService, IDisposable
     {
@@ -95,6 +95,7 @@ namespace IntegrationEventLogEF.Services
                 {
                     _integrationEventLogContext?.Dispose();
                 }
+
 
                 disposedValue = true;
             }
