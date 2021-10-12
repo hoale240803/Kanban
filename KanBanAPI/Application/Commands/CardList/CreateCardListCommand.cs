@@ -8,9 +8,9 @@ namespace KanBanAPI.Application.Commands.CardList
         [DataMember]
         public string Title { get; set; }
         [DataMember]
-        public int IdUser{ get; set; }
+        public string IdUser{ get; set; }
 
-        public CreateCardListCommand(string title,int idUser)
+        public CreateCardListCommand(string title,string idUser)
         {
             Title = title;
             IdUser = idUser;

@@ -1,11 +1,10 @@
 using Autofac;
-using Autofac.Extensions.DependencyInjection;
 using Infrastructure;
 using KanBan.API;
 using KanBanAPI.Application.Infrastructure.AutofacModules;
 using KanBanAPI.Application.Infrastructure.Filters;
-using KanBanAPI.Application.Utils;
 using KanBanAPI.Controllers;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -18,7 +17,6 @@ using Microsoft.OpenApi.Models;
 using MiddleMan.IntegrationEventLogEF;
 using System;
 using System.Reflection;
-using System.Text.Json;
 
 namespace KanBanAPI
 {
@@ -41,6 +39,7 @@ namespace KanBanAPI
             });
             services.AddCustomDbContext(Configuration);
             services.AddCustomMvc();
+            //services.AddMediatR(typeof(Startup).Assembly);
 
             //configure autofac
 
@@ -119,6 +118,7 @@ namespace KanBanAPI
             app.UseAuthentication();
             app.UseAuthorization();
         }
+
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterModule(new MediatorModule());
@@ -176,7 +176,7 @@ namespace KanBanAPI
                     .AllowAnyHeader()
                     .AllowCredentials());
             });
-           // 
+            //
             services.AddMvc().AddNewtonsoftJson();
 
             return services;

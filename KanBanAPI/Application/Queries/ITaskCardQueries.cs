@@ -12,7 +12,7 @@ namespace KanBanAPI.Application.Queries
 
         Task<IEnumerable<TaskCardObject>> GetTaskCardsFromCardListAsync(Guid userId);
 
-        Task<IEnumerable<CommentObject>> GetCommentsAsync();
+        Task<IEnumerable<CommentObject>> GetCommentsAsync(int taskCardId);
 
     }
 }
