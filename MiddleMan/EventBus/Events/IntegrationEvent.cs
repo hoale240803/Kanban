@@ -11,17 +11,17 @@ namespace MiddleMan.EventBus.Events
             CreationDate = DateTime.UtcNow;
         }
 
-        //[JsonConstructor]
+        [JsonConstructor]
         public IntegrationEvent(Guid id, DateTime createDate)
         {
             Id = id;
             CreationDate = createDate;
         }
 
-        //[JsonInclude]
+        [JsonInclude]
         public Guid Id { get; private init; }
 
-        //[JsonInclude]
+        [JsonInclude]
         public DateTime CreationDate { get; private init; }
     }
 }

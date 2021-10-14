@@ -1,18 +1,20 @@
 using Autofac;
-using Autofac.Extensions.DependencyInjection;
 using Infrastructure;
-using IntegrationEventLogEF;
+using KanBan.API;
 using KanBanAPI.Application.Infrastructure.AutofacModules;
 using KanBanAPI.Application.Infrastructure.Filters;
 using KanBanAPI.Controllers;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using MiddleMan.IntegrationEventLogEF;
 using System;
 using System.Reflection;
 
@@ -28,24 +30,25 @@ namespace KanBanAPI
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public virtual void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "KanBanAPI", Version = "v1" });
             });
             services.AddCustomDbContext(Configuration);
-            services.AddCustomMvc(); 
+            services.AddCustomMvc();
+            //services.AddMediatR(typeof(Startup).Assembly);
+
             //configure autofac
 
             //services.AddDbContext(Configuration).AddEventBus(Configuration);
-            var container = new ContainerBuilder();
-            container.Populate(services);
+            //var container = new ContainerBuilder();
+            //container.Populate(services);
 
-            container.RegisterModule(new MediatorModule());
-            container.RegisterModule(new ApplicationModule(Configuration["ConnectionString"]));
+            //container.RegisterModule(new MediatorModule());
+            //container.RegisterModule(new ApplicationModule(Configuration["ConnectionString"]));
             //return new AutofacServiceProvider(container.Build());
         }
 
@@ -68,7 +71,7 @@ namespace KanBanAPI
                });
 
             app.UseRouting();
-            app.UseCors("CorsPolicy");
+            //app.UseCors("CorsPolicy");
             //ConfigureAuth(app);
 
             if (env.IsDevelopment())
@@ -82,6 +85,14 @@ namespace KanBanAPI
 
             app.UseRouting();
 
+            app.UseCors(builder =>
+            {
+                builder.WithOrigins("https://localhost:5001")
+                       .AllowCredentials()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            });
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -89,9 +100,33 @@ namespace KanBanAPI
                 endpoints.MapControllers();
             });
         }
+
+        private void ConfigureEventBus(IApplicationBuilder app)
+        {
+            var eventBus = app.ApplicationServices.GetRequiredService<MiddleMan.EventBus.Abstractions.IEventBus>();
+
+            //eventBus.Subscribe<UserCheckoutAcceptedIntegrationEvent, IIntegrationEventHandler<UserCheckoutAcceptedIntegrationEvent>>();
+            //eventBus.Subscribe<GracePeriodConfirmedIntegrationEvent, IIntegrationEventHandler<GracePeriodConfirmedIntegrationEvent>>();
+            //eventBus.Subscribe<OrderStockConfirmedIntegrationEvent, IIntegrationEventHandler<OrderStockConfirmedIntegrationEvent>>();
+            //eventBus.Subscribe<OrderStockRejectedIntegrationEvent, IIntegrationEventHandler<OrderStockRejectedIntegrationEvent>>();
+            //eventBus.Subscribe<OrderPaymentFailedIntegrationEvent, IIntegrationEventHandler<OrderPaymentFailedIntegrationEvent>>();
+            //eventBus.Subscribe<OrderPaymentSucceededIntegrationEvent, IIntegrationEventHandler<OrderPaymentSucceededIntegrationEvent>>();
+        }
+
+        protected virtual void ConfigureAuth(IApplicationBuilder app)
+        {
+            app.UseAuthentication();
+            app.UseAuthorization();
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new MediatorModule());
+            builder.RegisterModule(new ApplicationModule(Configuration["ConnectionString"]));
+        }
     }
 
-    static class CustomExtensionsMethods
+    internal static class CustomExtensionsMethods
     {
         public static IServiceCollection AddCustomDbContext(this IServiceCollection services, IConfiguration configuration)
         {
@@ -113,13 +148,14 @@ namespace KanBanAPI
                                      sqlServerOptionsAction: sqlOptions =>
                                      {
                                          sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
-                                         //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
+                                         //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency
                                          sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                                      });
             });
 
             return services;
         }
+
         public static IServiceCollection AddCustomMvc(this IServiceCollection services)
         {
             // Add framework services.
@@ -129,7 +165,6 @@ namespace KanBanAPI
             })
                 // Added for functional tests
                 .AddApplicationPart(typeof(CardListController).Assembly)
-                .AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddCors(options =>
@@ -141,6 +176,33 @@ namespace KanBanAPI
                     .AllowAnyHeader()
                     .AllowCredentials());
             });
+            //
+            services.AddMvc().AddNewtonsoftJson();
+
+            return services;
+        }
+
+        public static IServiceCollection AddCustomConfiguration(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddOptions();
+            services.Configure<KanbanSettings>(configuration);
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = context =>
+                {
+                    var problemDetails = new ValidationProblemDetails(context.ModelState)
+                    {
+                        Instance = context.HttpContext.Request.Path,
+                        Status = StatusCodes.Status400BadRequest,
+                        Detail = "Please refer to the errors property for additional details."
+                    };
+
+                    return new BadRequestObjectResult(problemDetails)
+                    {
+                        ContentTypes = { "application/problem+json", "application/problem+xml" }
+                    };
+                };
+            });
 
             return services;
         }
@@ -148,7 +210,6 @@ namespace KanBanAPI
 
     //public static IServiceCollection AddCustomIntegrations(this IServiceCollection services, IConfiguration configuration)
     //{
-
     //    services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     //    //services.AddTransient<IIdentityService, IdentityService>();
     //    services.AddTransient<Func<DbConnection, IIntegrationEventLogService>>(

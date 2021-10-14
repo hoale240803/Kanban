@@ -1,10 +1,10 @@
 ﻿using Infrastructure;
-using IntegrationEventLogEF;
-using IntegrationEventLogEF.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MiddleMan.EventBus.Abstractions;
 using MiddleMan.EventBus.Events;
+using MiddleMan.IntegrationEventLogEF;
+using MiddleMan.IntegrationEventLogEF.Services;
 using System;
 using System.Data.Common;
 using System.Threading.Tasks;

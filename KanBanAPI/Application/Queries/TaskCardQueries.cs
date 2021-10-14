@@ -15,7 +15,7 @@ namespace KanBanAPI.Application.Queries
             _connectionString = !string.IsNullOrWhiteSpace(constr) ? constr : throw new ArgumentNullException(nameof(constr));
         }
 
-        public Task<IEnumerable<CommentObject>> GetCommentsAsync()
+        public Task<IEnumerable<CommentObject>> GetCommentsAsync(int taskCardId)
         {
             throw new NotImplementedException();
         }

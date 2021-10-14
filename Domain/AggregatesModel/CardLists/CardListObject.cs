@@ -16,8 +16,8 @@ namespace Domain.AggregatesModel.CardLists
         public string UpdateBy { get; set; }
         public string Location { get; set; }
         public string Device { get; set; }
-        public int? _idUser { get; set; }
-        public int? _idRedemption { get; set; }
+        public string _idUser { get; set; }
+        //public int? _idRedemption { get; set; }
 
         //public virtual RedemptionObject IdRedemptionNavigation { get; set; }
         // DDD Patterns comment
@@ -32,7 +32,7 @@ namespace Domain.AggregatesModel.CardLists
         {
             _taskCards = new List<TaskCardObject>();
         }
-        public CardListObject(string title, int idUser)
+        public CardListObject(string title, string idUser)
         {
             _title = title;
             _idUser = idUser;
@@ -41,7 +41,7 @@ namespace Domain.AggregatesModel.CardLists
 
         #region methods
 
-        public bool AddCardListObject(string title, int idUser)
+        public bool AddCardListObject(string title, string idUser)
         {
             var newCardList = new CardListObject(title, idUser);
 

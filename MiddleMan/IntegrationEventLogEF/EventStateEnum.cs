@@ -1,4 +1,4 @@
-﻿namespace IntegrationEventLogEF
+﻿namespace MiddleMan.IntegrationEventLogEF
 {
     public enum EventStateEnum
     {

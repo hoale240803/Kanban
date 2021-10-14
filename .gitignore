@@ -11,5 +11,9 @@
 
 /EventBus/bin/*
 /EventBus/obj/*
-/IntegrationEventLogEF/obj/*
-/IntegrationEventLogEF/bin/*
+
+/MiddleMan/EventBus/obj/*
+/MiddleMan/EventBus/bin/*
+/MiddleMan/IntegrationEventLogEF/obj/*
+/MiddleMan/IntegrationEventLogEF/bin/*
+/MiddleMan/IntegrationEventLogEF/obj/Debug/net5.0/IntegrationEventLogEF.csproj.FileListAbsolute.txt
