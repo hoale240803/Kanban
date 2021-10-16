@@ -8,11 +8,19 @@ namespace Infrastructure.Data.Repositories
 {
     public class TaskCardRepository : ITaskCardRepository
     {
-        public IUnitOfWork UnitOfWork => throw new NotImplementedException();
+        private readonly KanbanContext _context;
 
-        public TaskCardObject Add(TaskCardObject order)
+        public IUnitOfWork UnitOfWork
         {
-            throw new NotImplementedException();
+            get
+            {
+                return _context;
+            }
+        }
+
+        public TaskCardObject Add(TaskCardObject taskCard)
+        {
+            return _context.TaskCards.Add(taskCard).Entity;
         }
 
         public bool AssignTaskCard(int idUser, int idTaskCard)

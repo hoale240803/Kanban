@@ -19,6 +19,15 @@ namespace KanBanAPI.Application.Commands.CardList
 
         public async Task<bool> Handle(DeleteCardListCommand request, CancellationToken cancellationToken)
         {
+            // 1. get current user role
+
+            // 2. delete cardlist 
+
+            // 2.1 if the card list is own by current user
+
+            // 2.2 if user role is admin
+
+            
             _cardListRepository.Delete(request._idCardList);
             return await _cardListRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
         }

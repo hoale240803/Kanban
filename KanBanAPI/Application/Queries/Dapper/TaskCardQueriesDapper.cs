@@ -17,7 +17,7 @@ namespace KanBanAPI.Application.Queries.Dapper
             _connectionString = !string.IsNullOrWhiteSpace(constr) ? constr : throw new ArgumentNullException(nameof(constr));
         }
 
-        public async Task<IEnumerable<CommentObject>> GetCommentsAsync()
+        public async Task<IEnumerable<CommentObject>> GetCommentsAsync(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {

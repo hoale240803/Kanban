@@ -128,14 +128,14 @@ namespace KanBanAPI.Controllers
 
             if (Guid.TryParse(requestId, out Guid guid) && guid != Guid.Empty)
             {
-                var requestDeleteTaskCard = new IdentifiedCommand<SetTitleCardListCommand, bool>(command, guid);
+                var setTitleRequest = new IdentifiedCommand<SetTitleCardListCommand, bool>(command, guid);
 
                 _logger.LogInformation(
                     "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
-                    requestDeleteTaskCard.GetGenericTypeName(),
-                    nameof(requestDeleteTaskCard.Command._idCardList));
+                    setTitleRequest.GetGenericTypeName(),
+                    nameof(setTitleRequest.Command._idCardList));
 
-                commandResult = await _mediator.Send(requestDeleteTaskCard);
+                commandResult = await _mediator.Send(setTitleRequest);
             }
 
             if (!commandResult)

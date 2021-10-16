@@ -19,6 +19,9 @@ namespace KanBanAPI.Application.Commands.CardList
 
         public async Task<bool> Handle(SetTitleCardListCommand request, CancellationToken cancellationToken)
         {
+            //1. validate
+            //1.1 if card list is owned by current user
+            // 1.1 if current user role is admin
             _cardListRepository.UpdateTitle(request._title, request._idCardList);
             return await _cardListRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
         }

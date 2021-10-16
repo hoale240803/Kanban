@@ -17,16 +17,34 @@ namespace KanBanAPI.Application.Commands.TaskCard
         public string _device { get; set; }
         public int _idUser { get; set; }
 
-        public IEnumerable<AttachmentDTO> Attachments { get; set; }
-        public IEnumerable<CommentDTO> Comments { get; set; }
-        public IEnumerable<int> TagUsers { get; set; }
-        public IEnumerable<TodoDTO> Todos { get; set; }
+        public IEnumerable<AttachmentDTO> _attachments { get; set; }
+        public IEnumerable<CommentDTO> _comments { get; set; }
+        public IEnumerable<string> _taggedUsers { get; set; }
+        public IEnumerable<TodoDTO> _todos { get; set; }
 
-        public CreateTaskCardCommand(int idCarlist, string title, string prioriy, int estimateTiem, int actualTime,
+        public CreateTaskCardCommand(int idCarlist, string title, string prioriy, int estimateTime, int actualTime,
             string status, DateTime duedate, string location, string device, int idUser,
-            List<AttachmentDTO> attachmentDTOs, List<CommentDTO> commentDTOs, List<TodoDTO> todoDTOs)
+            List<AttachmentDTO> attachmentDTOs, List<CommentDTO> commentDTOs, List<TodoDTO> todoDTOs, List<string> taggedUsers)
         {
-
+            _idCardList = idCarlist;
+            _title = title;
+            _priority = prioriy;
+            _estimateTime = estimateTime;
+            _actualTime = actualTime;
+            _status = status;
+            _duedate = duedate;
+            _location = location;
+            _device = device;
+            _idUser = idUser;
+            _attachments = attachmentDTOs;
+            _comments = commentDTOs;
+            _taggedUsers = taggedUsers;
+            _todos = todoDTOs;
+        }
+        public CreateTaskCardCommand(int idCarlist, string title)
+        {
+            _idCardList = idCarlist;
+            _title = title;
         }
     }
 

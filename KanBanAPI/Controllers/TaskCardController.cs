@@ -329,21 +329,21 @@ namespace KanBanAPI.Controllers
 
             return Ok(comments);
         }
-        [Route("{taskCardId:int}")]
-        [HttpPost]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)badRequest)]
-        public async Task<IActionResult> GetTaskCardAsync(int taskCardId)
-        {
-            bool commandResult = false;
-            var taskCard = await _taskCardQueries.GetTaskCardAsync(taskCardId);
-            if (!commandResult)
-            {
-                return BadRequest();
-            }
+        //[Route("{taskCardId:int}")]
+        //[HttpPost]
+        //[ProducesResponseType((int)HttpStatusCode.OK)]
+        //[ProducesResponseType((int)badRequest)]
+        //public async Task<IActionResult> GetTaskCardAsync(int taskCardId)
+        //{
+        //    bool commandResult = false;
+        //    var taskCard = await _taskCardQueries.GetTaskCardAsync(taskCardId);
+        //    if (!commandResult)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            return Ok(taskCard);
-        }
+        //    return Ok(taskCard);
+        //}
 
     }
 }

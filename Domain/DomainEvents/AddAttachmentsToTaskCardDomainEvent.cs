@@ -1,9 +1,8 @@
-﻿using Domain.AggregatesModel.TaskCard;
-using Domain.SeedWork;
+﻿using MediatR;
 
-namespace Domain.AggregatesModel.Attachments
+namespace Domain.DomainEvents
 {
-    public class AttachmentObject : Entity, IAggregateRoot
+    public class AddAttachmentsToTaskCardDomainEvent : INotification
     {
         public string _fileName { get; set; }
         public string _fileId { get; set; }
@@ -11,9 +10,7 @@ namespace Domain.AggregatesModel.Attachments
         public string _externalPath { get; set; }
         public string _category { get; set; }
 
-        public virtual TaskCardObject IdTaskCardNavigation { get; set; }
-
-        public AttachmentObject(string fileName, string fileId,
+        public AddAttachmentsToTaskCardDomainEvent(string fileName, string fileId,
             string internalPath, string externalPath, string categoryFile)
         {
             _fileName = fileName;

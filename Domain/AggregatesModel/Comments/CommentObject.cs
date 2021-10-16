@@ -21,7 +21,7 @@ namespace Domain.AggregatesModel.Comments
         public string CreateBy { get; set; }
         public DateTime? UpdateAt { get; set; }
         public string UpdateBy { get; set; }
-        public int? IdUser { get; set; }
+        public string IdUser { get; set; }
 
         public virtual TaskCardObject IdTaskCardNavigation { get; set; }
         public virtual UserObject IdUserCardNavigation { get; set; }
