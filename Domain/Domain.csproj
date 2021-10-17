@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Events\" />
     <Folder Include="AggregatesModel\UserToken\" />
     <Folder Include="AggregatesModel\UserRole\" />
     <Folder Include="AggregatesModel\Roles\" />

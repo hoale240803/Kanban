@@ -56,10 +56,10 @@ namespace Infrastructure.Data.EntitiesConfig
                 .HasMaxLength(255)
                 .HasColumnName("updateBy");
 
-            builder.HasOne(d => d.IdTaskCardNavigation)
-                .WithMany(p => p.Todos)
-                .HasForeignKey(d => d.IdTaskCard)
-                .HasConstraintName("FK_Todo_TaskCard");
+            //builder.HasOne(d => d.IdTaskCardNavigation)
+            //    .WithMany(p => p.Todos)
+            //    .HasForeignKey(d => d.IdTaskCard)
+            //    .HasConstraintName("FK_Todo_TaskCard");
         }
     }
 }

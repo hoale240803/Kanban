@@ -14,13 +14,13 @@ namespace Domain.AggregatesModel.Attachments
         public virtual TaskCardObject IdTaskCardNavigation { get; set; }
 
         public AttachmentObject(string fileName, string fileId,
-            string internalPath, string externalPath, string categoryFile)
+            string internalPath, string externalPath, string category)
         {
             _fileName = fileName;
             _fileId = fileId;
             _internalPath = internalPath;
             _externalPath = externalPath;
-            _category = categoryFile;
+            _category = category;
         }
     }
 }

@@ -34,20 +34,20 @@ namespace KanBanAPI.Application.Infrastructure.AutofacModules
                 .As<IAttachmentRepository>()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<CardListRepository>()
-                .As<ICardListRepository>()
-                .InstancePerLifetimeScope();
+            //builder.RegisterType<CardListRepository>()
+            //    .As<ICardListRepository>()
+            //    .InstancePerLifetimeScope();
 
-            builder.RegisterType<CommentRepository>()
-               .As<ICommentRepository>()
-               .InstancePerLifetimeScope();
-            builder.RegisterType<RequestManager>()
-               .As<IRequestManager>()
-               .InstancePerLifetimeScope();
+            //builder.RegisterType<CommentRepository>()
+            //   .As<ICommentRepository>()
+            //   .InstancePerLifetimeScope();
+            //builder.RegisterType<RequestManager>()
+            //   .As<IRequestManager>()
+            //   .InstancePerLifetimeScope();
 
-            builder.RegisterType<TaskCardRepository>()
-               .As<ITaskCardRepository>()
-               .InstancePerLifetimeScope();
+            //builder.RegisterType<TaskCardRepository>()
+            //   .As<ITaskCardRepository>()
+            //   .InstancePerLifetimeScope();
             builder.RegisterAssemblyTypes(typeof(CreateCardListCommandHandler).GetTypeInfo().Assembly)
                       .AsClosedTypesOf(typeof(IIntegrationEventHandler<>));
         }

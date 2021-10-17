@@ -24,7 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\DomainEventHandlers\" />
     <Folder Include="Application\IntergrationEvents\EventsHandling\" />
     <Folder Include="Application\Validations\" />
     <Folder Include="Application\Models\" />

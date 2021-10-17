@@ -23,8 +23,7 @@ namespace KanBanAPI.Application.DomainEventHandlers.AddAttachmentsToTaskCard
             //_identityService = identityService ?? throw new ArgumentNullException(nameof(identityService));
             //_orderingIntegrationEventService = orderingIntegrationEventService ?? throw new ArgumentNullException(nameof(orderingIntegrationEventService));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _attachmentRepository= attachmentRepository ?? throw new ArgumentNullException(nameof(attachmentRepository));
-
+            _attachmentRepository = attachmentRepository ?? throw new ArgumentNullException(nameof(attachmentRepository));
         }
 
         public async Task Handle(AddAttachmentsToTaskCardDomainEvent addAttachmentToTaskCardEvent, CancellationToken cancellationToken)
@@ -32,8 +31,12 @@ namespace KanBanAPI.Application.DomainEventHandlers.AddAttachmentsToTaskCard
             // 1. upload file
             // 2.
             var attachmentToAdd = new AttachmentObject(
-                addAttachmentToTaskCardEvent);
-
+                addAttachmentToTaskCardEvent._internalPath,
+                addAttachmentToTaskCardEvent._fileName,
+                addAttachmentToTaskCardEvent._fileId,
+                addAttachmentToTaskCardEvent._externalPath,
+                addAttachmentToTaskCardEvent._category)
+                ;
 
             _attachmentRepository.Add(attachmentToAdd);
         }

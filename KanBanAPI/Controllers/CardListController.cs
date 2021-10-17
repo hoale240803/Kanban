@@ -75,8 +75,8 @@ namespace KanBanAPI.Controllers
                 _logger.LogInformation(
                     "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
                     requestUpdateTaskCard.GetGenericTypeName(),
-                    nameof(requestUpdateTaskCard.Command._taskCard.IdCardList),
-                    requestUpdateTaskCard.Command._taskCard.IdUser,
+                    nameof(requestUpdateTaskCard.Command._idCardList),
+                    requestUpdateTaskCard.Command._idUser,
                     requestUpdateTaskCard);
 
                 commandResult = await _mediator.Send(requestUpdateTaskCard);

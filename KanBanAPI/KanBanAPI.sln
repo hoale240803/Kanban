@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "..\Infras
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MiddleMan", "MiddleMan", "{C2CE58C6-FD10-4834-9E64-6AEB0851C1DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus", "..\MiddleMan\EventBus\EventBus.csproj", "{5F91AABD-9FAA-4949-B1D5-60FE62E77ABE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus", "..\MiddleMan\EventBus\EventBus.csproj", "{5F91AABD-9FAA-4949-B1D5-60FE62E77ABE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationEventLogEF", "..\MiddleMan\IntegrationEventLogEF\IntegrationEventLogEF.csproj", "{2422DCF5-E530-44D6-8DB0-A8A1D4B144DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationEventLogEF", "..\MiddleMan\IntegrationEventLogEF\IntegrationEventLogEF.csproj", "{2422DCF5-E530-44D6-8DB0-A8A1D4B144DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

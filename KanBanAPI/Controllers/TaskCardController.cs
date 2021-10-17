@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace KanBanAPI.Controllers
 {
+    [Route("api/v1/[controller]")]
+    [ApiController]
     public class TaskCardController : ControllerBase
     {
         private const HttpStatusCode badRequest = HttpStatusCode.BadRequest;
@@ -18,9 +20,9 @@ namespace KanBanAPI.Controllers
         private readonly ITaskCardQueries _taskCardQueries;
 
         //private readonly IIdentityService _identityService;
-        private readonly ILogger<CardListController> _logger;
+        private readonly ILogger<TaskCardController> _logger;
 
-        public TaskCardController(IMediator mediator, ITaskCardQueries taskCardQueries, ILogger<CardListController> logger)
+        public TaskCardController(IMediator mediator, ITaskCardQueries taskCardQueries, ILogger<TaskCardController> logger)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _taskCardQueries = taskCardQueries ?? throw new ArgumentNullException(nameof(taskCardQueries));
@@ -32,7 +34,7 @@ namespace KanBanAPI.Controllers
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)badRequest)]
-        public async Task<IActionResult> CreateCardListAsync([FromBody] CreateTaskCardCommand command, [FromHeader(Name = "x-requestid")] string requestId)
+        public async Task<IActionResult> CreateTaskCardAsync([FromBody] CreateTaskCardCommand command, [FromHeader(Name = "x-requestid")] string requestId)
         {
             bool commandResult = false;
 
@@ -40,14 +42,36 @@ namespace KanBanAPI.Controllers
             {
                 var requestCreateTaskCard = new IdentifiedCommand<CreateTaskCardCommand, bool>(command, guid);
 
-                _logger.LogInformation(
-                    "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
-                    requestCreateTaskCard.GetGenericTypeName(),
-                    nameof(requestCreateTaskCard.Command._idCardList),
-                    requestCreateTaskCard.Command._idUser,
-                    requestCreateTaskCard);
+                //_logger.LogInformation(
+                //    "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
+                //    requestCreateTaskCard.GetGenericTypeName(),
+                //    nameof(requestCreateTaskCard.Command._idCardList),
+                //    requestCreateTaskCard.Command._idUser,
+                //    requestCreateTaskCard);
 
                 commandResult = await _mediator.Send(requestCreateTaskCard);
+            }
+
+            if (!commandResult)
+            {
+                return BadRequest();
+            }
+
+            return Ok(true);
+        }
+
+        [Route("createMinize")]
+        [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)badRequest)]
+        public async Task<IActionResult> CreateTaskCardcreateMinizeAsync([FromBody] CreateTaskCardCommand command, [FromHeader(Name = "x-requestid")] string requestId)
+        {
+            bool commandResult = false;
+            if (Guid.TryParse(requestId, out Guid guid) && guid != Guid.Empty)
+            {
+
+                var requestCreateTaskCardMinimize = new IdentifiedCommand<CreateTaskCardCommand, bool>(command, guid);
+                commandResult = await _mediator.Send(requestCreateTaskCardMinimize);
             }
 
             if (!commandResult)
@@ -271,8 +295,8 @@ namespace KanBanAPI.Controllers
                 _logger.LogInformation(
                     "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
                     requestCreateTaskCard.GetGenericTypeName(),
-                    nameof(requestCreateTaskCard.Command._taskCard.IdCardList),
-                    requestCreateTaskCard.Command._taskCard.Id,
+                    nameof(requestCreateTaskCard.Command._idUser),
+                    requestCreateTaskCard.Command._idUser,
                     requestCreateTaskCard);
 
                 commandResult = await _mediator.Send(requestCreateTaskCard);
@@ -297,12 +321,12 @@ namespace KanBanAPI.Controllers
             {
                 var requestCreateTaskCard = new IdentifiedCommand<UploadAttachmentCommand, bool>(command, guid);
 
-                _logger.LogInformation(
-                    "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
-                    requestCreateTaskCard.GetGenericTypeName(),
-                    nameof(requestCreateTaskCard.Command.IdTaskCard),
-                    requestCreateTaskCard.Command.AttachmentDTO.FileId,
-                    requestCreateTaskCard);
+                //_logger.LogInformation(
+                //    "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
+                //    requestCreateTaskCard.GetGenericTypeName(),
+                //    nameof(requestCreateTaskCard.Command.IdTaskCard),
+                //    requestCreateTaskCard.Command.AttachmentDTO.FileId,
+                //    requestCreateTaskCard);
 
                 commandResult = await _mediator.Send(requestCreateTaskCard);
             }

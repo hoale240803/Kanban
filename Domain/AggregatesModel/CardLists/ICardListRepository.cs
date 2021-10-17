@@ -1,11 +1,12 @@
 ﻿using Domain.SeedWork;
 using System.Threading.Tasks;
 
+
 namespace Domain.AggregatesModel.CardLists
 {
-    public interface ICardListRepository : IRepository<CardListObject>
+    public interface ICardListRepository : IRepository<CardList>
     {
-        CardListObject Add(CardListObject order);
+        CardListObject Add(CardList order);
 
         void Update(CardListObject order);
 

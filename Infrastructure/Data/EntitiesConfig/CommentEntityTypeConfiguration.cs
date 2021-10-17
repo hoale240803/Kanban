@@ -44,10 +44,10 @@ namespace Infrastructure.Data.EntitiesConfig
                 .HasMaxLength(255)
                 .HasColumnName("updateBy");
 
-            builder.HasOne(d => d.IdTaskCardNavigation)
-                .WithMany(p => p.Comments)
-                .HasForeignKey(d => d.IdTaskCard)
-                .HasConstraintName("FK_Comment_TaskCard");
+            //builder.HasOne(d => d.IdTaskCardNavigation)
+            //    .WithMany(p => p.Comments)
+            //    .HasForeignKey(d => d.IdTaskCard)
+            //    .HasConstraintName("FK_Comment_TaskCard");
         }
     }
 }
