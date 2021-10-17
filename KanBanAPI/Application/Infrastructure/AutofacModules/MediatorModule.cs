@@ -2,6 +2,7 @@
 using KanBanAPI.Application.Commands.CardList;
 using KanBanAPI.Application.Commands.TaskCard;
 using MediatR;
+using System.Linq;
 using System.Reflection;
 
 namespace KanBanAPI.Application.Infrastructure.AutofacModules
@@ -10,8 +11,18 @@ namespace KanBanAPI.Application.Infrastructure.AutofacModules
     {
         protected override void Load(ContainerBuilder builder)
         {
+
             builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly)
-                .AsImplementedInterfaces();
+           .AsImplementedInterfaces();
+            //builder.RegisterAssemblyTypes(typeof(CreateOrderCommand)
+            //    .GetTypeInfo().Assembly)
+            //    .As(o => o.GetInterfaces()
+            //    .Where(i => i.IsClosedTypeOf(typeof(IAsyncRequestHandler<,>)))
+            //    .Select(i => new KeyedService("IAsyncRequestHandler", i)));
+            //builder.RegisterGenericDecorator(typeof(LogDecorator<,>),
+            //    typeof(IAsyncRequestHandler<,>), "IAsyncRequestHandler");
+
+
             // Register all the Command classes (they implement IRequestHandler) in assembly holding the Commands
             //CARDLIST
             builder.RegisterAssemblyTypes(typeof(CreateCardListCommand).GetTypeInfo().Assembly)
@@ -65,6 +76,8 @@ namespace KanBanAPI.Application.Infrastructure.AutofacModules
                 var componentContext = context.Resolve<IComponentContext>();
                 return t => { object o; return componentContext.TryResolve(t, out o) ? o : null; };
             });
+
+
 
             //builder.RegisterGeneric(typeof(LoggingBehavior<,>)).As(typeof(IPipelineBehavior<,>));
             //builder.RegisterGeneric(typeof(ValidatorBehavior<,>)).As(typeof(IPipelineBehavior<,>));

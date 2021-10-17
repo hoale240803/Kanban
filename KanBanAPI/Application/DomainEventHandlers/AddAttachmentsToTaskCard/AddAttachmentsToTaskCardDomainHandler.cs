@@ -39,6 +39,8 @@ namespace KanBanAPI.Application.DomainEventHandlers.AddAttachmentsToTaskCard
                 ;
 
             _attachmentRepository.Add(attachmentToAdd);
+
+            await _attachmentRepository.UnitOfWork.SaveEntitiesAsync();
         }
     }
 }

@@ -1,22 +1,22 @@
-﻿using Domain.AggregatesModel.TaskCard;
+﻿using Domain.DataModels;
 using Domain.SeedWork;
 using System.Threading.Tasks;
 
 namespace Domain.AggregatesModel.TaskCards
 {
-    public interface ITaskCardRepository : IRepository<TaskCardObject>
+    public interface ITaskCardRepository : IRepository<TaskCardEntity>
     {
-        TaskCardObject Add(TaskCardObject order);
+        TaskCardEntity Add(TaskCardEntity order);
 
-        bool Update(TaskCardObject order);
+        bool Update(TaskCardEntity order);
 
-        Task<TaskCardObject> GetAsync(int orderId);
+        Task<TaskCardEntity> GetAsync(int orderId);
 
         bool Delete(string id);
 
         bool AssignTaskCard(int idUser, int idTaskCard);
 
-        bool CopyTaskCard(int idCardList, TaskCardObject taskCardObject);
+        bool CopyTaskCard(int idCardList, TaskCardEntity TaskCardEntity);
 
         bool DragAndDrop(int idCardlist);
 
@@ -24,7 +24,6 @@ namespace Domain.AggregatesModel.TaskCards
 
         bool SetPriority(int taskCard, string priority);
 
-        TaskCardObject FindById(int idTaskCard);
-
+        TaskCardEntity FindById(int idTaskCard);
     }
 }

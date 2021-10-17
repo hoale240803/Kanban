@@ -1,18 +1,18 @@
-﻿using Domain.SeedWork;
+﻿using Domain.DataModels;
+using Domain.SeedWork;
 using System.Threading.Tasks;
-
 
 namespace Domain.AggregatesModel.CardLists
 {
-    public interface ICardListRepository : IRepository<CardList>
+    public interface ICardListRepository : IRepository<CardListEntity>
     {
-        CardListObject Add(CardList order);
+        CardListEntity Add(CardListEntity order);
 
-        void Update(CardListObject order);
+        void Update(CardListEntity order);
 
         bool UpdateTitle(string title, int idCardList);
 
-        Task<CardListObject> GetAsync(int orderId);
+        Task<CardListEntity> GetAsync(int orderId);
 
         bool Delete(int id);
     }

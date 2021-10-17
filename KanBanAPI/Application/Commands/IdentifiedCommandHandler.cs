@@ -1,4 +1,6 @@
 ﻿using Infrastructure.Idempotency;
+using KanBanAPI.Application.Commands.CardList;
+using KanBanAPI.Application.Commands.TaskCard;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using MiddleMan.EventBus.Extensions;
@@ -50,35 +52,35 @@ namespace KanBanAPI.Application.Commands
                     var idProperty = string.Empty;
                     var commandId = string.Empty;
 
-                    //switch (command)
-                    //{
-                    //    case CreateOrderCommand createOrderCommand:
-                    //        idProperty = nameof(createOrderCommand.UserId);
-                    //        commandId = createOrderCommand.UserId;
-                    //        break;
+                    switch (command)
+                    {
+                        case CreateCardListCommand createCardList:
+                            idProperty = nameof(createCardList.IdUser);
+                            commandId = createCardList.IdUser;
+                            break;
 
-                    //    case CancelOrderCommand cancelOrderCommand:
-                    //        idProperty = nameof(cancelOrderCommand.OrderNumber);
-                    //        commandId = $"{cancelOrderCommand.OrderNumber}";
-                    //        break;
+                        case CreateTaskCardCommand createTaskCard:
+                            idProperty = nameof(createTaskCard._idCardList);
+                            commandId = $"{createTaskCard._idUser}";
+                            break;
 
-                    //    case ShipOrderCommand shipOrderCommand:
-                    //        idProperty = nameof(shipOrderCommand.OrderNumber);
-                    //        commandId = $"{shipOrderCommand.OrderNumber}";
-                    //        break;
+                        //case ShipOrderCommand shipOrderCommand:
+                        //    idProperty = nameof(shipOrderCommand.OrderNumber);
+                        //    commandId = $"{shipOrderCommand.OrderNumber}";
+                        //    break;
 
-                    //    default:
-                    //        idProperty = "Id?";
-                    //        commandId = "n/a";
-                    //        break;
-                    //}
+                        default:
+                            idProperty = "Id?";
+                            commandId = "n/a";
+                            break;
+                    }
 
-                    //_logger.LogInformation(
-                    //    "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
-                    //    commandName,
-                    //    idProperty,
-                    //    commandId,
-                    //    command);
+                    _logger.LogInformation(
+                        "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
+                        commandName,
+                        idProperty,
+                        commandId,
+                        command);
 
                     //// Send the embeded business command to mediator so it runs its related CommandHandler
                     var result = await _mediator.Send(command, cancellationToken);

@@ -1,5 +1,6 @@
 ﻿using Domain.AggregatesModel.TaskCard;
 using Domain.AggregatesModel.TaskCards;
+using Domain.DataModels;
 using Infrastructure.Idempotency;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -21,10 +22,10 @@ namespace KanBanAPI.Application.Commands.TaskCard
         public async Task<bool> Handle(CreateTaskCardCommand request, CancellationToken cancellationToken)
         {
 
-            var taskCard = new TaskCardObject
+            var taskCard = new TaskCardEntity
             {
-                _title = request._title,
-                _idCardList = request._idCardList 
+                Title = request._title,
+                IdCardList = request._idCardList 
             };
             _taskCardRepository.Add(taskCard);
             return await _taskCardRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);

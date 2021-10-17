@@ -1,4 +1,5 @@
 ﻿using Domain.AggregatesModel.CardLists;
+using Domain.DataModels;
 using Infrastructure.Idempotency;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -21,7 +22,7 @@ namespace KanBanAPI.Application.Commands.CardList
         {
             //validate
             // add cardlist
-            var cardList = new CardListObject(request.Title, request.IdUser);
+            var cardList = new CardListEntity(request.Title, request.IdUser);
             _cardListRepository.Add(cardList);
             return await _cardListRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
         }

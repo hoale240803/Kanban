@@ -1,10 +1,13 @@
 ﻿//using System;
+//using System.ComponentModel.DataAnnotations;
 
-//namespace Infrastructure.Idempotency
+//namespace Domain.DataModels
 //{
-//    public class ClientRequest
+//    public partial class ClientRequest
 //    {
+//        [Key]
 //        public Guid Id { get; set; }
+
 //        public string Name { get; set; }
 //        public DateTime Time { get; set; }
 //    }
