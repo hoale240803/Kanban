@@ -70,7 +70,7 @@ namespace Infrastructure.Data.Repositories
             _context.Entry(cardList).State = EntityState.Modified;
         }
 
-        public bool UpdateTitle(string title, int idCardList)
+        public bool UpdateTitle(string title, string idUser, int idCardList)
         {
             var existCardList = _context.CardLists.FirstOrDefault(x => x.Id == idCardList);
 
@@ -79,6 +79,7 @@ namespace Infrastructure.Data.Repositories
                 return false;
             }
             existCardList.Title = title;
+            existCardList.UpdateBy = idUser;
             return true;
         }
     }

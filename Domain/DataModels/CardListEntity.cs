@@ -31,8 +31,15 @@ namespace Domain.DataModels
         public CardListEntity(string title, string idUser)
         {
             Title = title;
-            IdUser = idUser;
-
+            CreateBy = idUser;
         }
+        public CardListEntity(string title, string idUser, int idCardList )
+        {
+            Title = title;
+            IdUser = idUser;
+            UpdateBy = idUser;
+        }
+
+
     }
 }

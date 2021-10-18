@@ -1,4 +1,5 @@
 ﻿using Domain.AggregatesModel.CardLists;
+using Domain.DataModels;
 using Infrastructure.Idempotency;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -22,7 +23,9 @@ namespace KanBanAPI.Application.Commands.CardList
             //1. validate
             //1.1 if card list is owned by current user
             // 1.1 if current user role is admin
-            _cardListRepository.UpdateTitle(request._title, request._idCardList);
+            //var cardList = new CardListEntity(request._title, request._idUser, request._idCardList); 
+
+            _cardListRepository.UpdateTitle(request._title, request._idUser, request._idCardList);
             return await _cardListRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
         }
     }

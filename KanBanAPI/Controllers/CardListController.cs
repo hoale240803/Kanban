@@ -130,10 +130,10 @@ namespace KanBanAPI.Controllers
             {
                 var setTitleRequest = new IdentifiedCommand<SetTitleCardListCommand, bool>(command, guid);
 
-                _logger.LogInformation(
-                    "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
-                    setTitleRequest.GetGenericTypeName(),
-                    nameof(setTitleRequest.Command._idCardList));
+                //_logger.LogInformation(
+                //    "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",
+                //    setTitleRequest.GetGenericTypeName(),
+                //    nameof(setTitleRequest.Command._idCardList));
 
                 commandResult = await _mediator.Send(setTitleRequest);
             }

@@ -10,7 +10,7 @@ namespace Domain.AggregatesModel.CardLists
 
         void Update(CardListEntity order);
 
-        bool UpdateTitle(string title, int idCardList);
+        bool UpdateTitle(string title, string idUser, int idCardList);
 
         Task<CardListEntity> GetAsync(int orderId);
 
